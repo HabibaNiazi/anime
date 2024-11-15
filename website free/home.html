@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animeverse</title>
+  <link rel="stylesheet" href="home-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <button class="navbar-toggler" onclick="toggleOffcanvas()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
+    <div class="offcanvas" id="offcanvasNavbar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas</h5>
+        <button type="button" class="btn-close" onclick="toggleOffcanvas()" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel Section (after navbar) -->
+<!-- Carousel Section (after navbar) -->
+<div class="carousel-container">
+  <div class="carousel-slides">
+    <div class="carousel-slide">
+      <img src="" alt="Slide 1">
+    </div>
+    <div class="carousel-slide">
+      <img src="/images/1a37292bd09836d9fc282e6a79080979.jpg" alt="Slide 2">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+3" alt="Slide 3">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+4" alt="Slide 4">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+5" alt="Slide 5">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+6" alt="Slide 6">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+7" alt="Slide 7">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+8" alt="Slide 8">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+9" alt="Slide 9">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://via.placeholder.com/1920x600?text=Slide+1" alt="Slide 1 Duplicate">
+    </div>
+  </div>
+  <div class="carousel-buttons">
+    <button class="carousel-button prev" onclick="prevSlide()"></button>
+    <button class="carousel-button next" onclick="nextSlide()"></button>
+  </div>
+</div>
+
+
+  <script>
+    function toggleOffcanvas() {
+      const offcanvas = document.getElementById("offcanvasNavbar");
+      offcanvas.classList.toggle("show");
+    }
+
+    // Carousel functionality
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let autoSlideInterval;
+    let isTransitioning = false; // Prevent quick interactions during transitions
+
+    // Function to show a specific slide
+    function showSlide(index) {
+      const carouselSlides = document.querySelector('.carousel-slides');
+      isTransitioning = true;
+      carouselSlides.style.transition = 'transform 0.5s ease-in-out';
+
+      // Handle loop forward when reaching the duplicate first slide
+      if (index === totalSlides - 1) {
+        // Move to the duplicate slide
+        currentSlide = index;
+        carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // After the transition, instantly jump back to the real first slide without transition
+        setTimeout(() => {
+          carouselSlides.style.transition = 'none'; // Disable transition
+          currentSlide = 0; // Reset to real first slide
+          carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+          setTimeout(() => {
+            carouselSlides.style.transition = 'transform 0.5s ease-in-out'; // Re-enable transition
+            isTransitioning = false;
+          }, 50);
+        }, 500); // Wait for the initial slide transition to complete
+      } else {
+        currentSlide = index;
+        carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500); // Transition duration
+      }
+    }
+
+    // Function for next slide
+    function nextSlide() {
+      if (!isTransitioning) {
+        showSlide(currentSlide + 1);
+        resetAutoSlide(); // Stop auto-slide when user interacts
+      }
+    }
+
+    // Function for previous slide
+    function prevSlide() {
+      if (!isTransitioning) {
+        if (currentSlide === 0) {
+          // Handle backward loop to last slide
+          const carouselSlides = document.querySelector('.carousel-slides');
+          carouselSlides.style.transition = 'none'; // Disable transition for instant move
+          currentSlide = totalSlides - 2; // Move to last real slide
+          carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+          setTimeout(() => {
+            carouselSlides.style.transition = 'transform 0.5s ease-in-out'; // Re-enable transition
+            showSlide(currentSlide - 1); // Move one step forward
+          }, 50);
+        } else {
+          showSlide(currentSlide - 1);
+        }
+        resetAutoSlide(); // Stop auto-slide when user interacts
+      }
+    }
+
+    // Function to start auto sliding
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        nextSlide();
+      }, 3000); // Change slide every 3 seconds
+    }
+
+    // Function to reset auto slide on manual interaction
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    // Start auto sliding
+    startAutoSlide();
+  </script>
+</body>
+</html>

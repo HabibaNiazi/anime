@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.4rem;
+}
+/* Customize the scrollbar */
+body::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #594b70; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded edges for the scrollbar thumb */
+    border: 3px solid #201F31; /* Adds a border around the thumb */
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #201F31; /* Background color of the scrollbar track */
+}
+body {
+    background-color: #201F31;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+nav{
+    text-align: center;
+    margin-top: 4rem;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Center the container */
+}
+.container {
+    display: flex;
+    justify-content: center; /* Center the navlinks inside the container */
+}
+
+.navlinks {
+    display: flex;
+    justify-content: center; /* Center the links inside the navlinks */
+    width: 100%; /* Ensure it spans the width */
+    gap: 40px; /* Increase spacing between the items */
+    font-family: 'Lucida Sans', "Poppins", Arial;
+    font-weight: 1000;
+    font-size: 14px;
+}
+
+.navlinks li {
+    list-style: none;
+}
+
+.navlinks a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+}
+.navlinks a:hover {
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+
+.body-container {
+    padding-top: 5rem;
+    border-radius: 50px;
+    min-height: 500px;
+    width: 90vw;
+    max-width: 1500px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 2rem;
+    background-color: #323149;
+    background-image: 
+    linear-gradient(to right,  #2B2A3C 30%, rgba(58, 53, 53, 0) 0.2), 
+    url('images/anime-8801333_1280.png');
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    flex-direction: column;
+}
+
+.search-form {
+    margin-top: 0;
+    align-self: flex-start;
+    padding-top: 6rem;
+    margin-left: 30px;
+}
+
+.search-input {
+    width: 400px;
+    height: 55px;
+    margin-right: 15px;
+    padding: 0.5rem;
+    border: 2px solid #86789d;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #201F31;
+}
+
+.search-btn {
+    padding: 0.5rem 1rem;
+    width: 100px;
+    border: 2px solid #5d4a77;
+    background-color: #5d4a77;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #86789d;
+    border-color: #86789d;
+    color: #f0f0f0;
+}
+
+.search-input:focus {
+    border-color: #5d4a77;
+    outline: none;
+}
+
+.namelogo {
+    margin-top: 0;
+    margin-bottom: -70px;
+    margin-left: 30px;
+    font-family: Arial Black;
+    font-weight: 1000;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+}
+
+.namelogo span {
+    color: #673e71;
+}
+
+.about-container {
+    padding-top: 5rem;
+    border-radius: 50px;
+    width: 99vw;
+    max-width: 1200px;
+    margin-left: 4rem;
+    margin-right: 6rem;
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: justify;
+    margin-right: 3rem;
+}
+
+.about-container h1, .about-container p, .about-container h6, .about-container ul {
+    color: #d4c8e6;
+}
+
+.top-search {
+    width: 500px;
+    padding-top: 3rem;
+    margin-left: 30px;
+    color: #eae6f2;
+}
+
+.top-search span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #656565;
+}
+
+.site-btn {
+    padding: 0.5rem 1rem;
+    width: 200px;
+    border: 2px solid #5d4a77;
+    background-color: #5d4a77;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 30px;
+    margin-top: 2rem;
+}
+
+.arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+    transform: rotate(45deg);
+    margin-left: 5px;
+    cursor: pointer;
+}
+.footer{
+  padding-top: 5rem;
+    border-radius: 50px;
+    width: 99vw;
+    max-width: 1200px;
+    margin-left: 4rem;
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: justify;
+    margin-right: 3rem;
+}
+.footer p{
+  color:#d4c8e6;
+}
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+ 
+}
